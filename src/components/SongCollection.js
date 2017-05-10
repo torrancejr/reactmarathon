@@ -6,11 +6,14 @@ class SongCollection extends React.Component{
     super(props);
   }
 
+
   render(){
+    let handleSongSelect = this.props.handleSongSelect;
     let selectedSongId = this.props.selectedSongId;
     let songs  = this.props.songs.map((element)=>{
       // body
       let className = null;
+      let songSelectMethod = () => {handleSongSelect(element.id)}
       if(element.id == selectedSongId){
         className = "selected";
       }
@@ -20,6 +23,7 @@ class SongCollection extends React.Component{
           name = {element.name}
           artist = {element.artist}
           className = {className}
+          handleSongSelect = {songSelectMethod}
         />
       )
     });
